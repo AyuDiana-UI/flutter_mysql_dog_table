@@ -1,3 +1,4 @@
+// Kelas yang menyimpan data suatu dog / anjing, yaitu ID, nama, dan umurnya.
 class Dog {
   // Properti-properti
   final int? id; // Properti ini tidak wajib karena diberikan secara otomatis di database.
