@@ -1,14 +1,15 @@
 // Kelas yang menyimpan data suatu dog / anjing, yaitu ID, nama, dan umurnya.
 class Dog {
   // Properti-properti
-  final int? id; // Properti ini tidak wajib karena diberikan secara otomatis di database.
-  final String name;
-  final int age;
+  final int? id; // Properti ini tidak wajib karena akan diassign secara otomatis di database.
+  final String name; // Properti wajib nama Dog
+  final int age; // Properti wajib umur Dog
 
-  // Inisialisasi instansi
+  // Parameter instansi ketika membuat Dog baru
+  // Contoh: Dog(2, "Horse", 20);
   Dog({this.id, required this.name, required this.age});
 
-  // Mengoutput data dog dalam format Map 
+  // Mengoutput sebuah Map data Dog 
   // yang dapat diterima sebagai data JSON.
   Map<String, dynamic> toJson() {
     return {
@@ -22,11 +23,9 @@ class Dog {
   factory Dog.fromJson(Map<String, dynamic> json) {
     // id dan age akan diperiksa tipe datanya masing-masing.
     // Seandainya berupa String, ia akan dikonversi menjadi int terlebih dahulu.
-    //
-    // Seandainya juga name berupa Null, ia akan digantikan oleh String kosong. 
     return Dog(
       id: json['id'] is String ? int.parse(json['id']) : json['id'],
-      name: json['name'] ?? '',
+      name: json['name'] ?? '', // Seandainya juga name berupa Null, ia akan digantikan oleh String kosong. 
       age: json['age'] is String ? int.parse(json['age']) : json['age'],
     );
   }
