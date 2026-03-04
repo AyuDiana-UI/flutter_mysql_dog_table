@@ -51,6 +51,7 @@ class DogProvider with ChangeNotifier {
   }
 
   // Menghapus sebuah Dog di API sekaligus memanggil fetchDogs
+  // Ia menggunakan parameter ID untuk melacak Dog yang ditarget
   Future<void> removeDog(int id) async {
     // Memerintahkan penghapusan Dog di api_service.dart
     await _apiService.deleteDog(id);
